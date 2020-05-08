@@ -37,7 +37,7 @@ Pour utiliser ce plugin, je recommande un [Raspberry Pi Zero W](https://www.rasp
 
 * [Installer sur un Raspberry Pi](docs/raspberrypi_fr.md)
 * [Installer sur un Mac](docs/macos_fr.md)
-* [Ajouter les capteurs Flower Power au HomeKit](docs/configure.md)
+* [Ajouter les capteurs Flower Power au HomeKit](docs/configure_fr.md)
 
 Veuillez prendre connaissance des [limitations et coexistence](docs/limitations.md) avec les autres plugins utilisant le Bluetooth :
 

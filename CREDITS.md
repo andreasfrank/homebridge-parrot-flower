@@ -21,3 +21,7 @@ homebridge-flower-sensor wouldn't be possible without the work done by others. I
 * [@grover](https://github.com/grover)
 
   * Author of the homebridge plugin
+
+* [@antoineraulin](https://github.com/antoineraulin)
+
+  * Athor of the update
