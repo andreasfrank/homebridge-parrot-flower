@@ -148,7 +148,7 @@ Move the bluetooth-hci-socket folder to the correct location :
 ```bash
 cd node_modules
 cd @abandonware
-mv bluetooth-hci-socket../
+mv bluetooth-hci-socket ../
 ```
 
 There you go! The plugin should now work on your Raspberry.
