@@ -52,7 +52,7 @@ Voir [HomeKit Apps](docs/apps.md) pour un tableau comparatif des fonctionnalité
 
 ## Crédits
 
-Voir [CREDITS](CREDITS.md) pour les remerciements aux personnes qui ont contribué directement ou indirectement à ce plugin.
+Voir [CREDITS](CREDITS_FR.md) pour les remerciements aux personnes qui ont contribué directement ou indirectement à ce plugin.
 
 ## Autres
 

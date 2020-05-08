@@ -24,4 +24,4 @@ homebridge-flower-sensor wouldn't be possible without the work done by others. I
 
 * [@antoineraulin](https://github.com/antoineraulin)
 
-  * Athor of the update
+  * Author of the update
