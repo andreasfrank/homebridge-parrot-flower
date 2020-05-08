@@ -6,9 +6,9 @@ Intégre [Parrot Flower Power](https://www.parrot.com/us/connected-garden/parrot
 
 ## Statut
 
-[ ! [HitCount](http://hits.dwyl.com/antoineraulin/homebridge-parrot-flower.svg)](http://hits.dwyl.com/antoineraulin/homebridge-parrot-flower)
-[ ! [Version du nœud](https://img.shields.io/node/v/homebridge-flower-sensor.svg?style=flat)](http://nodejs.org/download/)
-[ ! [Version NPM](https://badge.fury.io/js/homebridge-flower-sensor.svg?style=flat)](https://npmjs.org/package/homebridge-flower-sensor)
+[![HitCount](http://hits.dwyl.com/antoineraulin/homebridge-parrot-flower.svg)](http://hits.dwyl.com/antoineraulin/homebridge-parrot-flower)
+[![Version du nœud](https://img.shields.io/node/v/homebridge-flower-sensor.svg?style=flat)](http://nodejs.org/download/)
+[![Version NPM](https://badge.fury.io/js/homebridge-flower-sensor.svg?style=flat)](https://npmjs.org/package/homebridge-flower-sensor)
 
 ## Capacités
 
@@ -29,17 +29,17 @@ Ces capacités sont spécifiques au Parrot Pot :
 * Démarrer l'arrosage
 * Dans Elgato Eve, voir le type de programme (manuel ou automatique) pour l'arrosage. (Accessoire de type Système d'irrigation)
 
-D'autres capacités sont prévues à l'avenir. Voir le [CHANGELOG] (CHANGELOG_FR.md) pour les informations liées aux mises-à-jour.
+D'autres capacités sont prévues à l'avenir. Voir le [CHANGELOG](CHANGELOG_FR.md) pour les informations liées aux mises-à-jour.
 
 ## Utilisation de ce plugin
 
-Pour utiliser ce plugin, je recommande un [Raspberry Pi Zero W] (https://www.raspberrypi.org/products/raspberry-pi-zero-w/). Vous pouvez surveiller plusieurs appareils Flower Power dans un homebridge sur un Raspberry Pi Zero W.
+Pour utiliser ce plugin, je recommande un [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/). Vous pouvez surveiller plusieurs appareils Flower Power dans un homebridge sur un Raspberry Pi Zero W.
 
-* [Installer sur un Raspberry Pi] (docs/raspberrypi.md)
+* [Installer sur un Raspberry Pi](docs/raspberrypi.md)
 * [Installer sur un Mac](docs/macos.md)
 * [Ajouter les capteurs Flower Power au HomeKit](docs/configure.md)
 
-Veuillez prendre connaissance des [limitations et coexistence] (docs/limitations.md) avec les autres plugins utilisant le Bluetooth :
+Veuillez prendre connaissance des [limitations et coexistence](docs/limitations.md) avec les autres plugins utilisant le Bluetooth :
 
 ## Clients supportés
 
@@ -58,7 +58,7 @@ Voir [CREDITS](CREDITS.md) pour les remerciements aux personnes qui ont contribu
 
 Si vous l'utilisez et l'appréciez, merci de laisser une note en mettant un étoile sur ce projet.
 
-Si vous l'utilisez et que vous rencontrez un problème, envoyez un message à [GitHub] (https://github.com/antoineraulin/homebridge-parrot-flower/issues) - je vais essayer de vous aider.
+Si vous l'utilisez et que vous rencontrez un problème, envoyez un message à [GitHub](https://github.com/antoineraulin/homebridge-parrot-flower/issues) - je vais essayer de vous aider.
 
 Si vous l'avez essayé, mais que vous n'aimez pas ce plugin, parlez-en moi aussi dans un ticket. J'essaierai de faire de mon mieux
 pour les aborder pendant mon temps libre.
