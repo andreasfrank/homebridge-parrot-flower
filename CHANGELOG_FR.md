@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.4.1
+
+* Afficher le niveau d'eau dans le réservoir
+* Détecteur de fuite activé lorsque le niveau d'eau dans le réservoir est trop bas (< 15%).
+
 ## Version 0.4
 
 Première mise à jour depuis le fork.

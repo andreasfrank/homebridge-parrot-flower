@@ -32,6 +32,8 @@ These capabilities are specific to the Parrot Pot:
 
 * Start watering
 * In Elgato Eve, see the type of program (manual or automatic) for watering. (Accessory type Irrigation system)
+* Water level in the tank
+* Triggering of a too low water level sensor in the tank (< 15%)
 
 There're more capabilities planned for the future. And see the [CHANGELOG](CHANGELOG.md) for release information.
 

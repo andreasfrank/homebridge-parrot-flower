@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.4.1
+
+* Display the water level in the tank
+* Leak detector activated when the water level in the tank is too low (< 15%).
+
 ## Version 0.4
 
 First update since the fork.

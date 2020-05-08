@@ -2,7 +2,7 @@
 
 const WaterPlantTask = require('../parrot/WaterPlantTask');
 
-let ContactSensorState, Active, InUse, ProgramMode, ValveType;
+let ContactSensorState, Active, InUse, ProgramMode, ValveType, CurrentRelativeHumidity, LeakDetected;
 
 class WateringService {
 
@@ -14,8 +14,10 @@ class WateringService {
     ContactSensorState = api.hap.Characteristic.ContactSensorState;
     Active = api.hap.Characteristic.Active;
     InUse = api.hap.Characteristic.InUse;
+    CurrentRelativeHumidity = api.hap.Characteristic.CurrentRelativeHumidity;
     ProgramMode = api.hap.Characteristic.ProgramMode;
     ValveType = api.hap.Characteristic.ValveType;
+    LeakDetected = api.hap.Characteristic.LeakDetected;
 
     this._createService(api.hap);
 
@@ -26,6 +28,10 @@ class WateringService {
 
   _createService(hap) {
     this._wateringService = new hap.Service.IrrigationSystem(this.name);
+
+    this._waterLevelSensor = new hap.Service.HumiditySensor(`${this.name} Water Level`, 'tank');
+
+    this._waterLevelLowSensor = new hap.Service.LeakSensor(`${this.name} Water Level Low`);
 
     this._waterPlantSwitch = new hap.Service.Valve(`${this.name} Watering`);
     this._waterPlantSwitch.getCharacteristic(ValveType).updateValue(1);
@@ -38,7 +44,7 @@ class WateringService {
   }
 
   getServices() {
-    return [this._wateringService, this._waterPlantSwitch, this._wateringError];
+    return [this._wateringService, this._waterPlantSwitch, this._wateringError, this._waterLevelSensor, this._waterLevelLowSensor];
   }
 
   _onDeviceStatusChanged(deviceStatus) {
@@ -61,6 +67,14 @@ class WateringService {
     } else {
       this._wateringService.getCharacteristic(Active).updateValue(false);
       this._wateringService.getCharacteristic(InUse).updateValue(false);
+    }
+
+    this._waterLevelSensor.getCharacteristic(CurrentRelativeHumidity).updateValue(wateringStatus.waterLevel);
+
+    if(wateringStatus.waterLevel <= 15){
+      this._waterLevelLowSensor.getCharacteristic(LeakDetected).updateValue(1);
+    }else{
+      this._waterLevelLowSensor.getCharacteristic(LeakDetected).updateValue(0);
     }
 
     this._updateSensor(this._wateringError, wateringStatus.hasWateringError);

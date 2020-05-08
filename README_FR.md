@@ -29,6 +29,8 @@ Ces capacités sont spécifiques au Parrot Pot :
 
 * Démarrer l'arrosage
 * Dans Elgato Eve, voir le type de programme (manuel ou automatique) pour l'arrosage. (Accessoire de type Système d'irrigation)
+* Niveau d'eau dans le réservoir
+* Déclenchement d'un capteur de niveau d'eau trop faible dans le réservoir (< 15%)
 
 D'autres capacités sont prévues à l'avenir. Voir le [CHANGELOG](CHANGELOG_FR.md) pour les informations liées aux mises-à-jour.
 
