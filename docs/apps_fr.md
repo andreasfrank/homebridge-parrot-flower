@@ -26,4 +26,4 @@ Le tableau suivant résume le comportement à attendre entre les différentes ap
 | Humidité moyenne visible sur 24h | :x: | :white_check_mark: |
 | Capteur de contact de faible taux d'humidité | :white_check_mark: | :white_check_mark: |
 
-:white_check_mark: indique que la fonction est disponible et prise en charge. :x : indique que la fonction n'est pas disponible.
+:white_check_mark: indique que la fonction est disponible et prise en charge. :x: indique que la fonction n'est pas disponible.

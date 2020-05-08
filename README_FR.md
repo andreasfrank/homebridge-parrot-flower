@@ -1,6 +1,6 @@
 # homebridge-parrot-flower
 
-Attention : ce projet est un fork du projet homebridge-flower-sensor de @grover.
+Attention : ce projet est un fork du projet [homebridge-flower-sensor de @grover](https://github.com/grover/homebridge-flower-sensor).
 
 Intégre [Parrot Flower Power](https://www.parrot.com/us/connected-garden/parrot-pot#parrot-pot), le [Parrot Pot](https://www.parrot.com/us/connected-garden/parrot-pot#parrot-pot) ou le [Parrot H2O](http://blog.parrot.com/2015/01/05/ces-2015-flower-power-h2o/), qui n'a jamais été publié, dans HomeKit en utilisant [homebridge](https://github.com/nfarina/homebridge). Ce plugin ne dépend pas du [Parrot Cloud](https://community.smartthings.com/t/parrot-flower-power-discontinued/78929), désormais abandonné, en parlant directement aux capteurs grâce à une connexion Bluetooth basse énergie.
 
@@ -58,7 +58,7 @@ Voir [CREDITS](CREDITS_FR.md) pour les remerciements aux personnes qui ont contr
 
 Si vous l'utilisez et l'appréciez, merci de laisser une note en mettant un étoile sur ce projet.
 
-Si vous l'utilisez et que vous rencontrez un problème, envoyez un message à [GitHub](https://github.com/antoineraulin/homebridge-parrot-flower/issues) - je vais essayer de vous aider.
+Si vous l'utilisez et que vous rencontrez un problème, envoyez moi un message sur [GitHub](https://github.com/antoineraulin/homebridge-parrot-flower/issues) - je vais essayer de vous aider.
 
 Si vous l'avez essayé, mais que vous n'aimez pas ce plugin, parlez-en moi aussi dans un ticket. J'essaierai de faire de mon mieux
 pour les aborder pendant mon temps libre.

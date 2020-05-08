@@ -2,7 +2,7 @@
 
 const WaterPlantTask = require('../parrot/WaterPlantTask');
 
-let ContactSensorState, On, WaterLevel, WateringMode, WateringStatus;
+let ContactSensorState, On, WaterLevel, WateringMode, WateringStatus, Active, InUse, ProgramMode, ValveType;
 
 class WateringService {
 
@@ -13,8 +13,12 @@ class WateringService {
 
     ContactSensorState = api.hap.Characteristic.ContactSensorState;
     On = api.hap.Characteristic.On;
+    Active = api.hap.Characteristic.Active;
+    InUse = api.hap.Characteristic.InUse;
     WaterLevel = api.hap.Characteristic.WaterLevel;
     WateringMode = api.hap.Characteristic.WateringMode;
+    ProgramMode = api.hap.Characteristic.ProgramMode;
+    ValveType = api.hap.Characteristic.ValveType;
     WateringStatus = api.hap.Characteristic.WateringStatus;
 
     this._createService(api.hap);
@@ -25,10 +29,11 @@ class WateringService {
   }
 
   _createService(hap) {
-    this._wateringService = new hap.Service.WateringService(this.name);
+    this._wateringService = new hap.Service.IrrigationSystem(this.name);
 
-    this._waterPlantSwitch = new hap.Service.Switch(`${this.name} Watering`);
-    this._waterPlantSwitch.getCharacteristic(On)
+    this._waterPlantSwitch = new hap.Service.Valve(`${this.name} Watering`);
+    this._waterPlantSwitch.getCharacteristic(ValveType).updateValue(1);
+    this._waterPlantSwitch.getCharacteristic(Active)
       .on('set', this._waterPlant.bind(this))
       .updateValue(false)
       .displayName = 'Water Plant';
@@ -47,14 +52,20 @@ class WateringService {
   }
 
   _onWateringData(wateringStatus) {
-    this._wateringService.getCharacteristic(WaterLevel)
-      .updateValue(wateringStatus.waterLevel);
 
-    this._wateringService.getCharacteristic(WateringMode)
-      .updateValue(wateringStatus.wateringMode);
+    if(wateringStatus.wateringMode == "Manual"){
+      this._wateringService.getCharacteristic(ProgramMode).updateValue(0);
+    }else{
+      this._wateringService.getCharacteristic(ProgramMode).updateValue(1);
+    }
 
-    this._wateringService.getCharacteristic(WateringStatus)
-      .updateValue(wateringStatus.wateringStatus);
+    if(wateringStatus.wateringStatus == "Watering"){
+      this._wateringService.getCharacteristic(Active).updateValue(true);
+      this._wateringService.getCharacteristic(InUse).updateValue(true);
+    }else{
+      this._wateringService.getCharacteristic(Active).updateValue(false);
+      this._wateringService.getCharacteristic(InUse).updateValue(false);
+    }
 
     this._updateSensor(this._wateringError, wateringStatus.hasWateringError);
   }
@@ -74,9 +85,13 @@ class WateringService {
     }
 
     try {
+      this._waterPlantSwitch.getCharacteristic(InUse)
+      .updateValue(true);
+      this._wateringService.getCharacteristic(Active).updateValue(true);
+      this._wateringService.getCharacteristic(InUse).updateValue(true);
       await this._device.execute(new WaterPlantTask());
 
-      setTimeout(this._resetWaterPlantSwitch.bind(this), 1000);
+      setTimeout(this._resetWaterPlantSwitch.bind(this), 10000);
       callback();
     }
     catch (e) {
@@ -85,8 +100,12 @@ class WateringService {
   }
 
   _resetWaterPlantSwitch() {
-    this._waterPlantSwitch.getCharacteristic(On)
+    this._waterPlantSwitch.getCharacteristic(Active)
       .updateValue(false);
+    this._waterPlantSwitch.getCharacteristic(InUse)
+      .updateValue(false);
+      this._wateringService.getCharacteristic(Active).updateValue(false);
+      this._wateringService.getCharacteristic(InUse).updateValue(false);
   }
 }
 

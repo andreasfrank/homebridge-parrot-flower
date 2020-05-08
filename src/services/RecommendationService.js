@@ -18,7 +18,7 @@ class RecommendationService extends EventEmitter {
       this.log('Missing thresholdHumidity value for plant recommendations. Assuming minimum humidity level of zero and recommendations will not trigger.');
     }
     if (config.thresholdLightLevel === undefined) {
-      this.log('Missing thresholdHumidity value for plant recommendations. Assuming minimum light level of zero and recommendations will not trigger.');
+      this.log('Missing thresholdLightLevel value for plant recommendations. Assuming minimum light level of zero and recommendations will not trigger.');
     }
 
     /**
