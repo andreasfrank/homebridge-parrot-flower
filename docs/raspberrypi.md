@@ -83,7 +83,7 @@ sudo apt install build-essential
 
 You now have the necessary tools to work with npm packages that require compiling source code.
 
-> _ These instructions have been freely adapted from [DigitalOcean's tutorial for installing Node.js on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04) _
+> _These instructions have been freely adapted from [DigitalOcean's tutorial for installing Node.js on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04)_
 
 ## Install homebridge
 

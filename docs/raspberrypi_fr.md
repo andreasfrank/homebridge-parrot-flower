@@ -12,7 +12,7 @@ et de la puce Bluetooth. D'autres combinaisons peuvent fonctionner ou non. Si vo
 
 J'ai testé que c'était fonctionnel sur Raspbian Buster. Comme toujours : Les autres versions peuvent fonctionner également.
 
-Suivez les [directives officielles pour l'installation de Raspbian] (https://www.raspberrypi.org/documentation/installation/).
+Suivez les [directives officielles pour l'installation de Raspbian](https://www.raspberrypi.org/documentation/installation/).
 
 Une fois que vous avez configuré Raspbian, y compris tous les éléments de réseau, vous aurez besoin de Node.js.
 
@@ -28,7 +28,7 @@ Cela vous incitera à supprimer les nodejs, les node-legacy, les nodered et éve
 
 ## Installer node.js
 
-> _Ces instructions vous demandent d'installer node.js 12.16.3 LTS, mais une version plus récente peut aussi fonctionner.
+> _Ces instructions vous demandent d'installer node.js 12.16.3 LTS, mais une version plus récente peut aussi fonctionner._
 
 ### Installation à l'aide d'un PPA
 Pour obtenir une version plus récente de Node.js, vous pouvez ajouter le PPA (personal package archive) maintenu par NodeSource. Celui-ci vous permettra de trouver des versions plus récentes de Node.js que les référentiels officiels Raspbian.
@@ -80,13 +80,13 @@ sudo apt install build-essential
 
 Vous disposez maintenant des outils nécessaires pour travailler avec les packages `npm` qui nécessitent de compiler du code source.
 
-> _ Ces instructions ont été librement adaptées du [tutoriel de DigitalOcean pour l'installation de Node.js sur Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04-fr) _
+> _Ces instructions ont été librement adaptées du [tutoriel de DigitalOcean pour l'installation de Node.js sur Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04-fr)_
 
-## Installer un homebridge
+## Installer homebridge
 
 Ce plugin nécessite la version **0.4.36** de homebridge. Les versions antérieures ne fonctionneront pas. Les versions ultérieures devraient fonctionner.
 
-Pour installer Hombridge, veuillez consulter le [projet Hombridge sur GitHub] (https://github.com/homebridge/homebridge).
+Pour installer Hombridge, veuillez consulter le [projet Hombridge sur GitHub](https://github.com/homebridge/homebridge).
 
 Si vous souhaitez avoir une interface graphique pour Homebridge, suivez plutôt ce tutoriel (officiel) : [oznu/homebridge-config-ui-x](https://github.com/oznu/homebridge-config-ui-x)
 
@@ -107,7 +107,7 @@ En revanche, après l'avoir testé, le module Bluetooth du Raspberry Pi 4 foncti
 
 Installer les dépendances noble pour Raspbian en exécutant les commandes suivantes :
 
-"bash
+```bash
 sudo apt-get install bluetooth bluez libbluetooth-dev libudev-dev
 ```
 
@@ -131,7 +131,7 @@ Déplacez-vous dans le répertoire du plugin (normalement : `/usr/lib/node_modul
 cd /usr/lib/node_modules/homebridge-parrot-flower/
 ```
 
-Installez la version de [bluetooth-hci-socket gérée par le collectif @abandonware] (https://www.npmjs.com/package/@abandonware/bluetooth-hci-socket) : 
+Installez la version de [bluetooth-hci-socket gérée par le collectif @abandonware](https://www.npmjs.com/package/@abandonware/bluetooth-hci-socket) : 
 
 ```bash
 npm i @abandonware/bluetooth-hci-socket
