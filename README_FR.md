@@ -8,7 +8,7 @@ Intégre [Parrot Flower Power](https://www.parrot.com/us/connected-garden/parrot
 
 [![HitCount](http://hits.dwyl.com/antoineraulin/homebridge-parrot-flower.svg)](http://hits.dwyl.com/antoineraulin/homebridge-parrot-flower)
 [![Version du nœud](https://img.shields.io/node/v/homebridge-flower-sensor.svg?style=flat)](http://nodejs.org/download/)
-[![Version NPM](https://badge.fury.io/js/homebridge-flower-sensor.svg?style=flat)](https://npmjs.org/package/homebridge-flower-sensor)
+[![npm version](https://badge.fury.io/js/homebridge-parrot-flower.svg)](https://badge.fury.io/js/homebridge-parrot-flower)
 
 ## Capacités
 
