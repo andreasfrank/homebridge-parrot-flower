@@ -12,6 +12,7 @@ Integrate [Parrot Flower Power](https://www.parrot.com/us/connected-garden/parro
 [![Node version](https://img.shields.io/node/v/homebridge-flower-sensor.svg?style=flat)](http://nodejs.org/download/)
 [![npm version](https://badge.fury.io/js/homebridge-parrot-flower.svg)](https://badge.fury.io/js/homebridge-parrot-flower)
 ![Licence](https://img.shields.io/github/license/antoineraulin/homebridge-parrot-flower)
+[![Build Status](https://travis-ci.com/antoineraulin/homebridge-flower-sensor.svg?branch=master)](https://travis-ci.com/antoineraulin/homebridge-flower-sensor)
 
 ## Capabilities
 
