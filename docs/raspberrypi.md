@@ -1,210 +1,159 @@
-# Installation on Raspberry Pi
+# Installation sur Raspberry Pi
 
-This project was primarily made to run on one or more small Raspberry Pis that
-are distributed to achieve good signal strength closely located to the Bluetooth
-accessories you might have.
+Ce projet a été principalement conçu pour fonctionner sur un ou plusieurs petits Raspberry Pi qui
+sont placés pour obtenir une bonne puissance de signal, proche de celle des accessoires bluetooth que vous pourriez avoir.
 
-## Compatible Hardware
+## Matériel compatible
 
-This project was tested with a Raspberry Pi Zero W, which has an integrated WiFi
-and Bluetooth chipset. Other combinations may work or not. If you find a combination
-that works, please contribute your knowledge.
+Ce projet a été testé avec une Raspberry Pi Zero W et un Raspberry Pi 4, qui disposent d'un WiFi intégré
+et de la puce Bluetooth. D'autres combinaisons peuvent fonctionner ou non. Si vous trouvez une combinaison qui fonctionne, merci de me le faire savoir.
 
-## Install Raspbian Stretch
+## Installer Raspbian Buster
 
-I've good experiences running this on a fresh Raspbian Stretch. As always: Other versions may
-work and your mileage may vary.
+J'ai testé que c'était fonctionnel sur Raspbian Buster. Comme toujours : Les autres versions peuvent fonctionner également.
 
-Follow the [official guidelines to install Raspbian](https://www.raspberrypi.org/documentation/installation/).
+Suivez les [directives officielles pour l'installation de Raspbian] (https://www.raspberrypi.org/documentation/installation/).
 
-Once you've configured Raspbian including all networking stuff, you'll need Node.js.
+Une fois que vous avez configuré Raspbian, y compris tous les éléments de réseau, vous aurez besoin de Node.js.
 
-## Remove node.js 4.8.3
+## Supprimer le fichier node.js par défaut
 
-The Raspbian distribution may still include the old Node 4.8.3 distribution. Uninstall this before you continue with the following steps:
+La distribution Raspbian peut toujours inclure l'ancienne distribution Node 4.8.3. Désinstallez-la avant de poursuivre les étapes suivantes :
 
 ```bash
 sudo apt-get remove nodejs
 ```
 
-This will prompt you to remove nodejs, node-legacy, nodered and potentially some other packages that depend upon it.
+Cela vous incitera à supprimer les nodejs, les node-legacy, les nodered et éventuellement d'autres paquets qui en dépendent.
 
-## Download node.js
+## Installer node.js
 
-> _These instructions ask you to install node.js 9.3.0, but a newer version may work too._
+> _Ces instructions vous demandent d'installer node.js 12.16.3 LTS, mais une version plus récente peut aussi fonctionner.
 
-Download the proper [Node.js version 9.3.0](https://nodejs.org/en/download/current/)
-depending upon your version of the Raspberry Pi. If you're not sure which one is right for you,
-run:
+### Installation à l'aide d'un PPA
+Pour obtenir une version plus récente de Node.js, vous pouvez ajouter le PPA (personal package archive) maintenu par NodeSource. Celui-ci vous permettra de trouver des versions plus récentes de Node.js que les référentiels officiels Raspbian.
 
-```bash
-pi@raspberrypi:~ $ uname -m
-armv6l
-```
-
-In the above case you'd download the armv6 version of node.js using the following command:
+Tout d'abord, installez la PPA afin d'accéder à son contenu. Dans votre répertoire personnel, utilisez `curl` pour récupérer le script d'installation de la version souhaitée.
 
 ```bash
-wget https://nodejs.org/dist/v9.3.0/node-v9.3.0-linux-armv6l.tar.xz
+cd ~
+curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
 ```
 
-## Install node.js
-
-Install node.js using the following commands:
+Vous pouvez inspecter le contenu de ce script avec `nano` (ou votre éditeur de texte préféré) :
 
 ```bash
-tar -xvf node-v9.3.0-linux-armv6l.tar.xz
-sudo mv node-v9.3.0-linux-armv6l /opt/
-sudo ln -s /opt/node-v9.3.0-linux-armv6l/ /opt/node
-sudo chown -R root:root /opt/node*
-sudo ln -s /opt/node/bin/node /usr/bin/node
-sudo ln -s /opt/node/bin/npm /usr/bin/npm
+nano nodesource_setup.sh
 ```
 
-Verify that the installation has succeeded by running
+Exécutez le script sous `sudo` :
+
+```bash
+sudo bash nodesource_setup.sh
+```
+
+Le PPA sera ajouté à votre configuration et le cache local de votre package sera automatiquement mis à jour. Après avoir exécuté le script d'installation de Nodesource, vous pouvez installer le package Node.js :
+
+```bash
+sudo apt install nodejs
+```
+
+Pour vérifier quelle version de Node.js vous avez installée après ces premières étapes, tapez :
 
 ```bash
 node -v
+```
+
+Le package `nodejs` contient le binaire `nodejs` ainsi que `npm`, vous n'avez donc pas besoin d'installer `npm` séparément.
+
+`npm` utilise un fichier de configuration dans votre répertoire de base pour suivre les mises à jour. Il sera créé la première fois que vous utiliserez `npm`. Exécutez cette commande pour vérifier que `npm` est installé et pour créer le fichier de configuration :
+
+```bash
 npm -v
 ```
 
-The above commands should print ```v9.3.0``` and ```5.5.1``` respectively. Newer versions may work.
-
-## Install homebridge
-
-This plugin needs version **0.4.36** of homebridge. Earlier versions will not work. Later should work.
+Pour que certains packages `npm` fonctionnent (par exemple, ceux qui nécessitent la compilation du code source), vous devrez installer le package `build-essential` :
 
 ```bash
-sudo apt-get install libavahi-compat-libdnssd-dev
-sudo npm install -g homebridge --unsafe-perm
+sudo apt install build-essential
 ```
 
-## Bluetooth issues
+Vous disposez maintenant des outils nécessaires pour travailler avec les packages `npm` qui nécessitent de compiler du code source.
 
-Please be aware of the following problems in noble, which affect the bluetooth
-connections to your accessories:
+> _ Ces instructions ont été librement adaptées du [tutoriel de DigitalOcean pour l'installation de Node.js sur Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04-fr) _
+
+## Installer un homebridge
+
+Ce plugin nécessite la version **0.4.36** de homebridge. Les versions antérieures ne fonctionneront pas. Les versions ultérieures devraient fonctionner.
+
+Pour installer Hombridge, veuillez consulter le [projet Hombridge sur GitHub] (https://github.com/homebridge/homebridge).
+
+Si vous souhaitez avoir une interface graphique pour Homebridge, suivez plutôt ce tutoriel (officiel) : [oznu/homebridge-config-ui-x](https://github.com/oznu/homebridge-config-ui-x)
+
+## Problèmes de Bluetooth
+
+Veuillez prendre note des problèmes suivants avec Noble, qui affectent les connexions bluetooth avec vos accessoires :
 
 - [Noble #465](https://github.com/noble/noble/issues/465)
 - [Noble #480](https://github.com/noble/noble/issues/480)
 - [Noble #474](https://github.com/noble/noble/issues/474)
 
-It also does not seem to be the fault of noble. Using a USB Bluetooth Dongle with 
-a Cambridge Silicon Radio CSR8510A10 chip has worked well for me. Unfortunately
-that means that the Broadcom Bluetooth chip in recent Raspberry Pi 3/Zero W
-models does not work well with the Parrot devices.
+Il ne semble pas non plus que ce soit la faute de noble. L'utilisation d'un dongle Bluetooth USB avec une puce CSR8510A10 de Cambridge Silicon Radio a bien fonctionné pour moi. Malheureusement cela signifie que la puce Bluetooth Broadcom du récent Raspberry Pi 3/Zero W
+ne fonctionne pas bien avec les appareils Parrot.
 
-### Disable Raspberry Pi onboard bluetooth
+En revanche, après l'avoir testé, le module Bluetooth du Raspberry Pi 4 fonctionne correctement avec ce plugin.
 
-It is advised to disable the Broadcom integrated Bluetooth module. Good 
-instructions for that can be found at the [Raspberry Pi Firmware Repository](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README).
+## Installer les dépendances noble
 
-## Install noble dependencies
+Installer les dépendances noble pour Raspbian en exécutant les commandes suivantes :
 
-Install the noble dependencies for Raspbian by executing the commands:
-
-```bash
+"bash
 sudo apt-get install bluetooth bluez libbluetooth-dev libudev-dev
 ```
 
-## Install this plugin
+## Installez ce plugin
 
-And finally install homebridge-flower-sensor with:
-
-```bash
-sudo npm install -g homebridge-flower-sensor --unsafe-perm
-```
-
-## Launch homebridge upon boot
-
-I'd recommend running homebridge via systemd - this is best described in [this gist by @johannrichard](https://gist.github.com/johannrichard/0ad0de1feb6adb9eb61a/).
-
-The path to ```homebridge``` is ```/opt/node/bin/homebridge``` if you followed these instructions. As such the ```ExecStart``` line in ```homebridge.service``` should be:
-
-```text
-ExecStart=/opt/node/bin/homebridge $HOMEBRIDGE_OPTS
-```
-
-Additionally change ```/etc/default/homebridge``` to look as follows:
-
-```text
-# Defaults / Configuration options for homebridge
-# The following settings tells homebridge where to find the config.json file 
-# and where to persist the data (i.e. pairing and others)
-HOMEBRIDGE_OPTS=-D -U /var/lib/homebridge
-
-# If you uncomment the following line, homebridge will log more
-# You can display this via systemd's journalctl: journalctl -f -u homebridge
-DEBUG=homebridge,flower:*
-```
-
-I would not recommend using the ```DEBUG=*``` option as this will give you a lot of logging from the bluetooth stack, which is usually not necessary. The debug option accepts a comma separated list of names if you need logging from other modules.
-
-You can inspect the logs later using:
+Et enfin, installer homebridge-parrot-flower avec :
 
 ```bash
-sudo journalctl -f -u homebridge
+sudo npm install -g homebridge-parrot-flower --unsafe-perm
 ```
 
-## Give node bluetooth privileges
+## Problèmes d'installation de Noble sur le dernier Raspbian :
 
-If you're launching homebridge as a non-root user (you should!) you need to give the node executable permissions to start and stop bluetooth advertising:
+Le paquet Noble utilise une dépendance abandonnée (bluetooth-hci-socket), c'est-à-dire qu'elle n'est plus mise à jour et que son installation échoue sur Raspberry. 
+
+C'est pourquoi je propose la méthode suivante pour faire fonctionner le plugin sur Raspberry :
+
+Déplacez-vous dans le répertoire du plugin (normalement : `/usr/lib/node_modules/homebridge-parrot-flower/`) :
+
+```bash
+cd /usr/lib/node_modules/homebridge-parrot-flower/
+```
+
+Installez la version de [bluetooth-hci-socket gérée par le collectif @abandonware] (https://www.npmjs.com/package/@abandonware/bluetooth-hci-socket) : 
+
+```bash
+npm i @abandonware/bluetooth-hci-socket
+```
+
+Déplacez le dossier bluetooth-hci-socket au bon endroit : 
+
+```bash
+cd node_modules
+cd @abandonware
+mv bluetooth-hci-socket ../
+```
+
+Et voilà ! Le plugin devrait maintenant fonctionner sur votre Raspberry.
+
+## Donner des privilèges bluetooth à Node.js
+
+Si vous lancez homebridge en tant qu'utilisateur non root (vous devriez !), vous devez donner à Node des autorisations exécutables pour démarrer et arrêter le bluetooth advertising :
 
 ```bash
 sudo apt-get install libcap2-bin
 sudo setcap cap_net_raw+eip /opt/node/bin/node
 ```
 
-## Create a skeleton homebridge configuration
-
-You need to create the following folder:
-
-```bash
-sudo mkdir /var/lib/homebridge
-```
-
-and create the homebridge configuration file with ```nano```:
-
-```bash
-sudo nano /var/lib/homebridge/config.json
-```
-
-Paste the following configuration block, save with Ctrl+O and exit with Ctrl+X:
-
-```text
-{
-  "bridge": {
-    "name": "Homebridge",
-    "username": "CC:22:3D:E3:CE:30",
-    "port": 51826,
-    "pin": "031-45-154"
-  },
-  "platforms": [
-    {
-      "platform": "FlowerSensors",
-      "sensors": [
-      ]
-    }
-  ]
-}
-```
-
-> I'd recommend changing the name, username, port and pin properties to be unique in your installation.
-
-Finally you need to give the homebridge user account permissions to the folder and all files it contains:
-
-```bash
-sudo chmod -R 777 /var/lib/homebridge
-sudo chown -R homebridge:homebridge /var/lib/homebridge
-```
-
-## Enable your homebridge installation
-
-If you've followed the installation up to this point you can finish up the installation by running:
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable homebridge
-sudo systemctl start homebridge
-```
-
-Continue by [adding your Flower Power device](configure.md).
+Continuez en [ajoutant votre appareil Flower Power ou Parrot Pot](configure_fr.md).
