@@ -43,7 +43,7 @@ class FlowerPowerSensor {
     this._accessoryInformation = new Service.AccessoryInformation();
     this._accessoryInformation
       .setCharacteristic(Characteristic.Name, info.name)
-      .setCharacteristic(Characteristic.Manufacturer, "Parrot")
+      .setCharacteristic(Characteristic.Manufacturer, 'Parrot')
       .setCharacteristic(Characteristic.Model, info.model)
       .setCharacteristic(Characteristic.SerialNumber, info.serial)
       .setCharacteristic(Characteristic.FirmwareRevision, info.firmwareRevision)
