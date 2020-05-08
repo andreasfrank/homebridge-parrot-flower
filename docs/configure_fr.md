@@ -109,7 +109,7 @@ configuration de l'installation avec les valeurs suivantes :
 Les trois valeurs ajoutées sont décrites ci-dessous :
 
 |Valeur|Type|Description|
-
+|-------|------|-------------|
 |recommandations|booléen|Détermine si les recommandations et les capteurs correspondants sont activés. Si c'est le cas, le plugin surveille les données des capteurs et déclenche les capteurs de contact si les seuils ne sont pas atteints.|
 |thresholdLightLevel|float|Le seuil de niveau de lumière en lux (lumens par mètre carré.) Le plugin fait la moyenne de tous les niveaux de lumière non nuls sur une période de 24 heures pour déterminer si le seuil a été atteint.|
 |seuilHumidité|flotteur|Le seuil d'humidité en pourcentage. La moyenne des taux d'humidité est calculée sur une période de 24 heures avant la comparaison avec le seuil.|
