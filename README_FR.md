@@ -48,7 +48,7 @@ Cette plateforme et les commutateurs qu'elle crée ont été vérifiés pour fon
 * Accueil
 * Elgato Eve
 
-Voir [HomeKit Apps](docs/apps.md) pour un tableau comparatif des fonctionnalités supportées.
+Voir [HomeKit Apps](docs/apps_fr.md) pour un tableau comparatif des fonctionnalités supportées.
 
 ## Crédits
 
