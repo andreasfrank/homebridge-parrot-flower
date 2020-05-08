@@ -36,7 +36,7 @@ D'autres capacités sont prévues à l'avenir. Voir le [CHANGELOG](CHANGELOG_FR.
 Pour utiliser ce plugin, je recommande un [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/). Vous pouvez surveiller plusieurs appareils Flower Power dans un homebridge sur un Raspberry Pi Zero W.
 
 * [Installer sur un Raspberry Pi](docs/raspberrypi_fr.md)
-* [Installer sur un Mac](docs/macos.md)
+* [Installer sur un Mac](docs/macos_fr.md)
 * [Ajouter les capteurs Flower Power au HomeKit](docs/configure.md)
 
 Veuillez prendre connaissance des [limitations et coexistence](docs/limitations.md) avec les autres plugins utilisant le Bluetooth :

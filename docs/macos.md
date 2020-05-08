@@ -41,7 +41,7 @@ necessary.
 
 Create a plain text file in ~/.homebridge/config.json - create the folder if necessary:
 
-```text
+```json
 {
   "bridge": {
     "name": "Homebridge",
