@@ -1,6 +1,6 @@
-# Add your Flower Power device
+# Add your Flower Power or Parrot Pot device
 
-Once you've installed the plugin you can add your Flower Power plant sensors to HomeKit.
+Once you've installed the plugin you can add your Flower Power/Pot plant sensors to HomeKit.
 
 ## Sensor configuration
 
